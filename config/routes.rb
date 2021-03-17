@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/sign_up', to: 'users#sign_up'
-  post 'users/sign_up', to: 'users#sign_up'
+  root 'users#create'
+
+  resources :users, only: [:new,:create,:index, :show]
 end
