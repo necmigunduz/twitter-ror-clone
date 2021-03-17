@@ -1,0 +1,12 @@
+<h2>Sign Up</h2>
+<div>
+<%= form_tag(users_sign_up_path, method: 'post')  do %>
+  <%= label_tag(:username, "User Name:") %>
+  <%= text_field_tag 'username', nil, placeholder: "Maximum 10 characters long" %>
+  
+ <%= label_tag(:fullname, "Full Name") %>
+  <%= text_field_tag 'email', nil, placeholder: "Maximum 30 characters long" %>
+  
+  <%= submit_tag("Submit") %>
+<% end %>
+</div>
