@@ -11,6 +11,62 @@
   </head>
 
   <body>
-    <%= yield %>
+    
+    <div class="container-fluid" style="height: 600px;">
+        <div class="row">
+            <div class="col-3 text-dark flex-column" style="height: 600px; background-color: rgb(33,51,70);">
+                <div class="flex-row"> 
+                    <img src="#" alt="profile">
+                    <p class="font-weight-bold text-secondary px-3"><%= current_user.fullname %></p>
+                </div>
+                <div class="flex-column text-secondary" style="font-size:12px; border-top: 1px solid rgb(33,40,50)">
+                    <div class="d-flex flex-row">
+                        <div class="p-2 d-flex flex-column">
+                            <span class="px-3">184</span>
+                            <span>Following</span>
+                        </div>
+                        <div class="p-2 d-flex flex-column">
+                            <span class="px-3">823</span>
+                            <span>Followers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 p-0">
+                <div style="height: 100px; width: 959px; background:linear-gradient( rgba(0, 23, 32, 0.5) 100%, black 100%),no-repeat center center fixed;;">
+                    <div class="row container">
+                        <nav class="nav col-2 mt-3">
+                            <a class="nav-link active" href="#"><i class="fas fa-dove fa-3x text-white"></i></a>
+                        </nav>
+                        
+                        <ul class="nav justify-content-end mb-2 col-10 mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link active text-dark" href="#"><i class="fas fa-sign-in-alt"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-sign-out-alt text-dark"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-user-plus text-dark"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    
+                </div>
+            <% if alert %>
+            <div><%= alert %></div>
+            <% end %>
+                <div class="m-5">
+                <%= yield %>
+                </div>
+            </div>
+            
+            <div class="footer col-12" style="height: 37px; background-color: rgb(82, 167, 232)">
+            </div>
+        
+        </div>
+    </div>
+    
   </body>
 </html>

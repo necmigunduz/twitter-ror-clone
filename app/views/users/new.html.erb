@@ -1,2 +1,12 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="align-items-center">
+<h2>Sign Up</h2>
+<%= form_tag(users_path, method: 'post')  do %>
+  <%= label_tag(:user_name, "Username:") %>
+  <%= text_field_tag 'username', nil, placeholder: "Maximum 10 characters long" %><br/>
+  
+ <%= label_tag(:email, "Full name:") %>
+  <%= text_field_tag 'fullname', nil, placeholder: "Maximum 30 characters long" %><br />
+  
+  <%= submit_tag("Submit") %>
+<% end %>
+</div>

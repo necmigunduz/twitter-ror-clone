@@ -1,0 +1,12 @@
+<h2>Sign In Form</h2>
+<div>
+<%= form_with scope: :user, url: '/sessions' do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  
+  <%= f.submit "Submit" %>
+<% end %>
+</div>
+<p>Not a member ?</p>
+<%= link_to 'Sign up', new_user_path, class: '' %>
