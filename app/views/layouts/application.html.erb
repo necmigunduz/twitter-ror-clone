@@ -21,17 +21,27 @@
                     <p class="font-weight-bold text-secondary px-3"><%= current_user.fullname %></p>
                     <% end %>
                 </div>
-                <div class="flex-column text-secondary" style="font-size:12px; border-top: 1px solid rgb(33,40,50)">
+                <div class="flex-column text-secondary ml-1" style="font-size:12px; border-top: 2px solid rgb(33,40,50)">
                     <div class="d-flex flex-row">
+                        <% if signed_in?%>
                         <div class="p-2 d-flex flex-column">
-                            <span class="px-3">184</span>
-                            <span>Following</span>
-                        </div>
-                        <div class="p-2 d-flex flex-column">
-                            <span class="px-3">823</span>
+                            <span class="px-3"><%= current_user.followers.count %></span>
                             <span>Followers</span>
                         </div>
+                        <div class="p-2 d-flex flex-column">
+                            <span class="px-3"><%= current_user.followeds.count %></span>
+                            <span>Following</span>
+                        </div>
+                        <% end %>
                     </div>
+                </div>
+                <div class="links d-flex flex-column" style="border-top: 2px solid rgb(33,40,50)">
+                <% if signed_in?%>
+                <%= link_to 'Home', root_path, class:"fa-1x text-white m-5 font-weight-bold" %>
+                <%= link_to 'Profile', users_path(current_user.id), class:"fa-1x m-5 text-white font-weight-bold" %>
+                <% else %>
+                    <p class="text-white ml-3 mt-5">'You are not signed in! To see the content, you need to sign in!'</p>
+                <% end %>
                 </div>
             </div>
             <div class="col-9 p-0">
