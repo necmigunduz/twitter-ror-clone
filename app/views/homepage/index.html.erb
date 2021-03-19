@@ -1,0 +1,7 @@
+<h2>Opinions</h2>
+
+<%= form_for(@opinion, url: opinions_path) do |f| %>
+    <%= f.label "Enter your opinion below" %> <br>
+    <%= f.text_field :text, autofocus: true, placeholder: "Type your opinion here!", class:"w-75" %>
+<% end %>
+

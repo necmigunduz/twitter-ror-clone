@@ -1,19 +1,18 @@
 class OpinionsController < ApplicationController
-  def new
-    @post = 
-  end
 
   def create
-    @post = Post.new(post_params)
+    @opinion = current_user.opinions.build(opinion_params)
 
-    if @post.save
-      redirect_to posts_path, notice: 'Post was successfully created.'
+    if @opinion.save
+      flash[:notice] = "Your opinion is created successfully!"
+      redirect_to root_path
     else
-      timeline_posts
-      render :index, alert: 'Post was not created.'
+      flash[:notice] = "Your opinion is not created. Try again!"
     end
   end
 
-  def index
+  private
+  def opinion_params
+    params.require(:user).permit(:text)
   end
 end

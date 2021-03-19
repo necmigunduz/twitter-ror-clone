@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
-  before_action :require_login, :except=>[:new, :create]
+  before_action :require_user, :except=>[:new, :create]
 
   def new
     @user = User.new
+    redirect_to root_path if signed_in?
   end
 
   def create
     @user = User.new(user_params)
-
+   
     respond_to do |format|
         if @user.save
             flash[:notice] = 'User is successfully created.'
@@ -19,12 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @users = User.all
-  end
-
   def show
-    
+    @user = User.find_by(id: session[:user_id])
+    @opinions = @user.opinions.ordered_by_most_recent
   end
 
+  def update
+    @user = current_user
+    @user.update(user_params)
+
+    flash[:notice] = "Your profile is successfully updated!"
+    redirect_to user_path(@user)
+  end
 end

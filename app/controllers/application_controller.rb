@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def require_login
+  def require_user
     return if signed_in?
 
     flash[:error] = 'You need to log in to complete this action!'
@@ -21,6 +21,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_params
-    params.require(:user).permit(:username)
+    params.permit(:username, :fullname)
   end
 end
