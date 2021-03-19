@@ -9,12 +9,14 @@ class SessionsController < ApplicationController
       flash[:success] = 'You have successfully signed in'
       redirect_to user_path(@user)
     else 
-      flash.now[:alert] = 'Something wrong with the login information'
+      flash.now[:alert] = 'Username is not found! Please try again!'
       render 'new'
     end
   end
 
   def destroy
+    reset_session
+    redirect_to new_session_path
   end
 
   private

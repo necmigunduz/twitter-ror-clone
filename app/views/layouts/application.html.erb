@@ -17,7 +17,9 @@
             <div class="col-3 text-dark flex-column" style="height: 600px; background-color: rgb(33,51,70);">
                 <div class="flex-row"> 
                     <img src="#" alt="profile">
+                    <% if signed_in?%>
                     <p class="font-weight-bold text-secondary px-3"><%= current_user.fullname %></p>
+                    <% end %>
                 </div>
                 <div class="flex-column text-secondary" style="font-size:12px; border-top: 1px solid rgb(33,40,50)">
                     <div class="d-flex flex-row">
@@ -36,26 +38,27 @@
                 <div style="height: 100px; width: 959px; background:linear-gradient( rgba(0, 23, 32, 0.5) 100%, black 100%),no-repeat center center fixed;;">
                     <div class="row container">
                         <nav class="nav col-2 mt-3">
-                            <a class="nav-link active" href="#"><i class="fas fa-dove fa-3x text-white"></i></a>
+                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x ml-4 text-white" %>
                         </nav>
                         
                         <ul class="nav justify-content-end mb-2 col-10 mt-4">
+                            <% if !signed_in?%>
                             <li class="nav-item">
-                                <a class="nav-link active text-dark" href="#"><i class="fas fa-sign-in-alt"></i></a>
+                                <%= link_to fa_icon('sign-in-alt'), new_session_path, class:"fa-2x px-2 text-dark" %>
                             </li>
+                            <% end %>
+                            <% if signed_in?%>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-sign-out-alt text-dark"></i></a>
+                                <%= link_to fa_icon('sign-out-alt'), session_path(current_user.id), method: :delete, data: { confirm: 'You are logging out!' }, class:"fa-2x px-2 text-dark" %>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-user-plus text-dark"></i></a>
-                            </li>
+                            <% end %>
                         </ul>
                     </div>
 
                     
                 </div>
             <% if alert %>
-            <div><%= alert %></div>
+            <div class="ml-5 mt-2 text-danger"><%= alert %></div>
             <% end %>
                 <div class="m-5">
                 <%= yield %>
