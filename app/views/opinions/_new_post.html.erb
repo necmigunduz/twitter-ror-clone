@@ -1,5 +1,5 @@
 <div>
-<%= form_with model: @opinion, scope: "opinion" do |f| %>
+<%= form_with model: @opinion, scope: "opinion", url: opinions_path do |f| %>
     <%= f.label :text %>
     <%= f.text_field :text %> <br><br>
     <%= f.submit "Submit" %>

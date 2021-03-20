@@ -8,7 +8,7 @@ class OpinionsController < ApplicationController
 
     if @opinion.save
       flash[:notice] = "Your opinion is created successfully!"
-      redirect_to opinions_show_path
+      redirect_to opinion_path(current_user.id)
     else
       flash[:notice] = "Your opinion is not created. Try again!"
     end
