@@ -14,22 +14,22 @@
     
     <div class="container-fluid" style="height: 600px;">
         <div class="row">
-            <div class="col-3 text-dark flex-column" style="height: 600px; background-color: rgb(33,51,70);">
+            <div class="col-3 text-dark flex-column h-auto bg-dark">
                 <div class="flex-row"> 
-                    <img src="#" alt="profile">
+                    <%# <img src="#" alt="profile"> %>
                     <% if signed_in?%>
-                    <p class="font-weight-bold text-secondary px-3"><%= current_user.fullname %></p>
+                    <p class="font-weight-bold text-light m-5"><%= current_user.fullname %></p>
                     <% end %>
                 </div>
                 <div class="flex-column text-secondary ml-1" style="font-size:12px; border-top: 2px solid rgb(33,40,50)">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row ml-3">
                         <% if signed_in?%>
                         <div class="p-2 d-flex flex-column">
-                            <span class="px-3"><%= current_user.followers.count %></span>
+                            <span class="px-3 text-light"><%= current_user.followers.count %></span>
                             <span>Followers</span>
                         </div>
                         <div class="p-2 d-flex flex-column">
-                            <span class="px-3"><%= current_user.followeds.count %></span>
+                            <span class="px-3 text-light"><%= current_user.followeds.count %></span>
                             <span>Following</span>
                         </div>
                         <% end %>
@@ -37,21 +37,29 @@
                 </div>
                 <div class="links d-flex flex-column" style="border-top: 2px solid rgb(33,40,50)">
                 <% if signed_in?%>
-                <%= link_to 'Home', root_path, class:"fa-1x text-white m-5 font-weight-bold" %>
-                <%= link_to 'Profile', users_path(current_user.id), class:"fa-1x m-5 text-white font-weight-bold" %>
+                <ul class="mt-5">
+                <li class="my-3" style="list-style-type: none;">
+                <i class="fas fa-home text-white"></i>
+                <%= link_to 'Home', root_path, class:"fa-1x text-white my-5 font-weight-bold" %>
+                </li>
+                <li class="my-3" style="list-style-type: none;">
+                <i class="far fa-user text-white"></i>
+                <%= link_to 'Profile', users_path(current_user.id), class:"fa-1x my-5 text-white font-weight-bold" %>
+                </li>
+                </ul>
                 <% else %>
                     <p class="text-white ml-3 mt-5">'You are not signed in! To see the content, you need to sign in!'</p>
                 <% end %>
                 </div>
             </div>
             <div class="col-9 p-0">
-                <div style="height: 100px; width: 959px; background:linear-gradient( rgba(0, 23, 32, 0.5) 100%, black 100%),no-repeat center center fixed;;">
+                <div class="bg-primary h-auto" style="width: 959px;">
                     <div class="row container">
-                        <nav class="nav col-2 mt-3">
-                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x ml-4 text-white" %>
+                        <nav class="nav col-2 mt-2">
+                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x ml-5 text-white" %>
                         </nav>
                         
-                        <ul class="nav justify-content-end mb-2 col-10 mt-4">
+                        <ul class="nav justify-content-end mb-2 col-10 mt-3">
                             <% if !signed_in?%>
                             <li class="nav-item">
                                 <%= link_to fa_icon('sign-in-alt'), new_session_path, class:"fa-2x px-2 text-dark" %>

@@ -1,6 +1,9 @@
 <% @opinions.each do |opinion|%>
 <ul>
-    <li><%= opinion.text %></li>
+    <li style="list-style-type: none;">
+    <p class="font-weight-bold">Post from <%= current_user.fullname %> </p>
+    <%= opinion.text %>
+    </li>
 </ul>
 <% end %>
 
