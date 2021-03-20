@@ -75,11 +75,24 @@
 
                     
                 </div>
-            <% if alert %>
-            <div class="ml-5 mt-2 text-danger"><%= alert %></div>
-            <% end %>
-                <div class="m-5">
-                <%= yield %>
+                <div class="row">              
+                    <div class="col-9 row">
+                        <div class="col-3 ml-5 mt-2 text-danger">
+                            <% if alert %>
+                            <%= alert %>
+                            <% end %>
+                        </div>
+                        <div class="m-5 col-9">
+                            <%= yield %>
+                        </div>
+                    </div>
+                    <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
+                        <h6 class="mx-2 mt-5 text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
+                        <% @suggested_followers.each do |u|%>
+                        <%= u.id %>
+                        <% end %>
+
+                    </div>  
                 </div>
             </div>
             

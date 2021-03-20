@@ -14,9 +14,8 @@ class OpinionsController < ApplicationController
     end
   end
   def show
-
     @user = User.find_by(id: session[:user_id])
-    @opinions = @user.opinions
+    @opinions = @user.opinions.ordered_by_most_recent
   end
 
   private

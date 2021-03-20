@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: session[:user_id])
     @opinions = @user.opinions
+    @suggested_followers = @user.suggested_followers
   end
 
   def update
