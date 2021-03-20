@@ -12,17 +12,17 @@ class UsersController < ApplicationController
     respond_to do |format|
         if @user.save
             flash[:notice] = 'User is successfully created.'
-            format.html { redirect_to user_path(@user) }
+            redirect_to user_path(@user)
         else
             flash[:notice] = 'Something went wrong.'
-            format.html { render :action => "new" }
+            render :action => "new"
         end
     end
   end
 
   def show
     @user = User.find_by(id: session[:user_id])
-    @opinions = @user.opinions.ordered_by_most_recent
+    @opinions = @user.opinions
   end
 
   def update

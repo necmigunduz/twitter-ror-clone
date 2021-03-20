@@ -1,0 +1,7 @@
+<div>
+<%= form_with model: @opinion, scope: "opinion" do |f| %>
+    <%= f.label :text %>
+    <%= f.text_field :text %> <br><br>
+    <%= f.submit "Submit" %>
+<% end %>
+</div>

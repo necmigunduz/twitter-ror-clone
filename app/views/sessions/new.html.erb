@@ -8,7 +8,11 @@
   <%= f.submit "Submit" %>
 <% end %>
 </div><br />
+
 <p>Not a member?</p>
+
 <% if !signed_in?%>
 <%= link_to 'Sign up', new_user_path, class: '' %>
 <% end %>
+
+

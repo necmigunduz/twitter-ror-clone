@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       flash[:success] = 'You have successfully signed in'
-      redirect_to user_path(@user)
+      redirect_to opinions_show_path
     else 
       flash.now[:alert] = 'Username is not found! Please try again!'
       render 'new'
