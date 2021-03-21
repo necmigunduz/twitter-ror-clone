@@ -55,9 +55,9 @@
             <div class="col-9 p-0">
                 <div class="bg-primary h-auto" style="width: 959px;">
                     <div class="row container">
-                        <nav class="nav col-2 mt-1 mb-1 p-1 bg-dark" style="border:2px solid white; border-top-right-radius: 60px;">
+                        <nav class="nav col-2 mt-1 mb-1 p-1 p-2 bg-dark" style="border:5px solid white; border-top-right-radius: 60px;">
                         <h3 class="mx-2 text-white">dwidder</h3>
-                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x mx-2 text-dark border p-2 bg-light" %>
+                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x mx-2 mt-3 text-dark border p-2 bg-light" %>
                         <small class="mx-2 text-light">Express yourself!</small>
                         </nav>
                         
@@ -96,10 +96,10 @@
                     <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
                         <h6 class="mx-2 mt-5 text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
                             <% suggested_followers.each do |u|%>
-                                <div>
+                                <div class="p-2">
                                     <%= form_with url: followings_path  do |f| %>
                                         <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>)
-                                        <%= f.submit %>
+                                        <%= f.submit value:'Follow' %>
                                     <% end %>
                                 </div>
                             <% end %>
