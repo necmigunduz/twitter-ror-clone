@@ -7,7 +7,9 @@ class User < ApplicationRecord
     has_many :opinions, foreign_key: :author_id
     has_many :followings
     has_many :followers, class_name: 'Following', foreign_key: 'follower_id'
+    has_many :follows, through: :followers, source: :followed
     has_many :followeds, class_name: 'Following', foreign_key: 'followed_id'
+    has_many :followees, through: :followeds, source: :follower
 
     def suggested_followers
         # Get who the current user are following
@@ -29,5 +31,11 @@ class User < ApplicationRecord
 
         User.where.not(id: friendship)
         # This will produce SQL query with IN. Something like: select * from posts where user_id NOT IN (1,45,874,43);
+    end
+
+
+    def friends_and_own_posts
+        Opinion.where(author_id: (follows.to_a << self))
+        # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
     end
 end

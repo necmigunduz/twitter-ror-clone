@@ -1,5 +1,5 @@
 <div style="margin-bottom: 900px;">
-<% @opinions_all.each do |opinion|%>
+<% @opinions_current_user_friends.each do |opinion|%>
 <ul>
     <li style="list-style-type: none;">
     <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
@@ -8,5 +8,3 @@
 </ul>
 <% end %>
 </div>
-
-

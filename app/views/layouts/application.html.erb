@@ -93,6 +93,7 @@
                             <%= yield %>
                         </div>
                     </div>
+                    <% if signed_in? %>
                     <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
                         <h6 class="mx-2 mt-5 text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
                             <% suggested_followers.each do |u|%>
@@ -104,6 +105,7 @@
                                 </div>
                             <% end %>
                     </div>  
+                    <% end %>
                 </div>
             </div>
             

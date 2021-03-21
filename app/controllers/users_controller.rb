@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: current_user.id)
-    @opinions = @user.opinions.ordered_by_most_recent
+    @opinions_current_user_friends = @user.friends_and_own_posts.ordered_by_most_recent
   end
 
   def update

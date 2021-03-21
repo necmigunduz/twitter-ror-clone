@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   # post 'opinions/new', to: 'opinions#create'
   # get 'opinions/show', to: 'opinions#show'
 
-  root 'users#show'
+  root 'opinions#index'
 end
