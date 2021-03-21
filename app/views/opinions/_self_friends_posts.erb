@@ -1,10 +1,27 @@
-<div style="margin-bottom: 900px;">
-<% @opinions_current_user_friends.each do |opinion|%>
-<ul>
-    <li style="list-style-type: none;">
-    <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
-    <%= opinion.text %>
-    </li>
-</ul>
-<% end %>
+<div>
+    <div>
+        <% @opinions_current_user_friends.each do |opinion|%>
+        <ul>
+            <li style="list-style-type: none;">
+            <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
+            <%= opinion.text %>
+            </li>
+        </ul>
+        <% end %>
+    </div>
+    <div style="margin-left:350px; width: 150%;">
+        <% if signed_in? %>
+        <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
+            <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
+                <% suggested_followers.each do |u|%>
+                    <div class="pl-5 py-1">
+                        <%= form_with url: followings_path  do |f| %>
+                            <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>) <br>
+                            <%= f.submit value:'Follow', class:'btn btn-primary' %>
+                        <% end %>
+                    </div>
+                <% end %>
+        </div>  
+        <% end %>
+    </div>
 </div>
