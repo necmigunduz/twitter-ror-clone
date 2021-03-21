@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
- # before_action :require_user, :except=>[:new, :create, :index]
-  before_action :current_user_exist?, :include => [:show]
+  before_action :current_user_exist?, :except => [:create, :show, :new]
   
   def new
     @user = User.new
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params) 
       if @user.save
           flash[:notice] = 'User is successfully created.'
-          redirect_to user_path(@user)
+          redirect_to new_session_path
       else
           flash[:notice] = 'Something went wrong.'
           render :action => "new"

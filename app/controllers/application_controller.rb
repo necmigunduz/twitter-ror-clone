@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :signed_in?
+  helper_method :current_user_exist?
 
   def current_user
     User.find_by(id: session[:user_id])
@@ -9,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def current_user_exist?
     if current_user.nil?
-      redirect_to new_session_path
+      redirect_to new_user_path
     end
   end
 
