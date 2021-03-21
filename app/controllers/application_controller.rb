@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:user_id])
   end
 
+  def current_user_exist?
+    if current_user.nil?
+      redirect_to new_session_path
+    end
+  end
+
   def signed_in?
     !current_user.nil?
   end

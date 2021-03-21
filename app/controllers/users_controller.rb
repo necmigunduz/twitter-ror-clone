@@ -1,29 +1,29 @@
 class UsersController < ApplicationController
-  before_action :require_user, :except=>[:new, :create]
-
+ # before_action :require_user, :except=>[:new, :create, :index]
+  before_action :current_user_exist?, :include => [:show]
+  
   def new
     @user = User.new
-    redirect_to root_path if signed_in?
+  end
+
+  def index
+    @users = User.all
   end
 
   def create
-    @user = User.new(user_params)
-   
-    respond_to do |format|
-        if @user.save
-            flash[:notice] = 'User is successfully created.'
-            redirect_to user_path(@user)
-        else
-            flash[:notice] = 'Something went wrong.'
-            render :action => "new"
-        end
-    end
+    @user = User.new(user_params) 
+      if @user.save
+          flash[:notice] = 'User is successfully created.'
+          redirect_to user_path(@user)
+      else
+          flash[:notice] = 'Something went wrong.'
+          render :action => "new"
+      end
   end
 
   def show
-    @user = User.find_by(id: session[:user_id])
-    @opinions = @user.opinions
-    @suggested_followers = @user.suggested_followers
+    @user = User.find_by(id: current_user.id)
+    @opinions = @user.opinions.ordered_by_most_recent
   end
 
   def update
@@ -32,5 +32,10 @@ class UsersController < ApplicationController
 
     flash[:notice] = "Your profile is successfully updated!"
     redirect_to user_path(@user)
+  end
+
+  private 
+  def user_params
+    params.require(:user).permit(:username, :fullname)
   end
 end

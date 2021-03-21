@@ -1,9 +1,9 @@
 class FollowingsController < ApplicationController
   def create
-    @following = current_user.followings.new(followed_id: params[:user_id])
+    @following = Following.new(follower_id: current_user.id, followed_id: params[:followed_id])
 
     if @following.save
-      flash[:notice] = "You have started following #{User.find(params[:user_id]).fullname}"
+      flash[:notice] = "You have started following #{User.find(params[:followed_id]).fullname}"
       redirect_to root_path
     else
       flash[:notice] = "Your request is not completed. Try again!"

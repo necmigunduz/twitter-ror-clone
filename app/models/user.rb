@@ -10,8 +10,24 @@ class User < ApplicationRecord
     has_many :followeds, class_name: 'Following', foreign_key: 'followed_id'
 
     def suggested_followers
-        User.where.not(user: (self.followeds.to_a << self))
+        # Get who the current user are following
+        following = Following.select(:followed_id).where(follower_id: self.id)
+        # Get who are the followers from current user
+        followers = Following.select(:follower_id).where(followed_id: self.id)
         
-        # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
+        # Creates a friendship array with all relationships the current user has
+        friendship = []
+
+        following.map do |f|
+            friendship.push(f.followed_id)
+        end
+        followers.map do |f|
+            friendship.push(f.follower_id)
+        end
+        friendship.push(self.id)
+
+
+        User.where.not(id: friendship)
+        # This will produce SQL query with IN. Something like: select * from posts where user_id NOT IN (1,45,874,43);
     end
 end

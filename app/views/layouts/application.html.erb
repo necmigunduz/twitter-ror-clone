@@ -44,7 +44,7 @@
                 </li>
                 <li class="my-3" style="list-style-type: none;">
                 <i class="far fa-user text-white"></i>
-                <%= link_to 'Profile', users_path(current_user.id), class:"fa-1x my-5 text-white font-weight-bold" %>
+                <%= link_to 'Profile', user_path(current_user), class:"fa-1x my-5 text-white font-weight-bold" %>
                 </li>
                 </ul>
                 <% else %>
@@ -83,15 +83,24 @@
                             <% end %>
                         </div>
                         <div class="m-5 col-9">
+                            <% flash.each do |type, msg| %>
+                                <div class="alert alert-info">
+                                    <%= msg %>
+                                </div>
+                            <% end %>
                             <%= yield %>
                         </div>
                     </div>
                     <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
                         <h6 class="mx-2 mt-5 text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
-                        <% @suggested_followers.each do |u|%>
-                        <%= u.id %>
-                        <% end %>
-
+                            <% suggested_followers.each do |u|%>
+                                <div>
+                                    <%= form_with url: followings_path  do |f| %>
+                                        <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>)
+                                        <%= f.submit %>
+                                    <% end %>
+                                </div>
+                            <% end %>
                     </div>  
                 </div>
             </div>

@@ -13,9 +13,8 @@ class OpinionsController < ApplicationController
       flash[:notice] = "Your opinion is not created. Try again!"
     end
   end
+  
   def show
-    @user = User.find_by(id: session[:user_id])
-    @opinions = @user.opinions.ordered_by_most_recent
   end
 
   private
