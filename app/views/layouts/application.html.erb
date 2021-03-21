@@ -11,7 +11,6 @@
   </head>
 
   <body>
-    
     <div class="container-fluid" style="height: 600px;">
         <div class="row">
             <div class="col-3 text-dark flex-column h-auto bg-dark">
@@ -61,18 +60,22 @@
                         <small class="mx-2 text-light">Express yourself!</small>
                         </nav>
                         
-                        <ul class="nav justify-content-end mb-2 col-10 mt-3">
+                        <div class="nav justify-content-end mb-2 col-10 mt-3 d-flex">
                             <% if !signed_in?%>
-                            <li class="nav-item">
+                            <div class="nav-item">
                                 <%= link_to fa_icon('sign-in-alt'), new_session_path, class:"fa-2x px-2 text-dark" %>
-                            </li>
+                            </div>
                             <% end %>
                             <% if signed_in?%>
-                            <li class="nav-item">
+                            <div><small class="text-white font-weight-bold">Create a new opinion</small></div>
+                            <div class="nav-item">
+                                <%= link_to fa_icon('pen-fancy'), user_path(current_user.id), class:"fa-2x px-2 text-light" %>
+                            </div>
+                            <div class="nav-item">
                                 <%= link_to fa_icon('sign-out-alt'), session_path(current_user.id), method: :delete, data: { confirm: 'You are logging out!' }, class:"fa-2x px-2 text-dark" %>
-                            </li>
+                            </div>
                             <% end %>
-                        </ul>
+                        </div>
                     </div>
 
                     
