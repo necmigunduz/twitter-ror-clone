@@ -1,10 +1,10 @@
-<div class="d-flex flex-column">
+<div class="d-flex flex-column border p-5 bg-light rounded">
   <div>
-  <h2>Sign In Form</h2>
+  <h2 class="border-bottom border-dark mb-2 font-weight-bold">Sign in form</h2>
   <%= form_with scope: :user, url: '/sessions' do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.label :username, class:"font-weight-bold" %>
+    <%= f.text_field :username, placeholder: "Enter your username" %>
     
     <%= f.submit "Submit" %>
   <% end %>
@@ -12,10 +12,10 @@
   
 
   <div>
-  <p>Not a member?</p>
+  <p class="font-weight-bold border-bottom border-dark">Not a member?</p>
 
   <% if !signed_in?%>
-  <%= link_to 'Sign up', new_user_path, class: '' %>
+  <%= link_to 'Sign up', new_user_path, class:'font-weight-bold border p-2 border-danger bg-dark text-white rounded' %>
   <% end %>
   </div>
 </div>

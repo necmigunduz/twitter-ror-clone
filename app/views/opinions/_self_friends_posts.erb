@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-8">
+        <h4 class="border text-white bg-dark text-center p-3 font-weight-bold">Posts</h4>
         <% @opinions_current_user_friends.each do |opinion|%>
         <ul>
-            <li style="list-style-type: none;">
+            <li class="list-no-style">
             <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
             <%= opinion.text %>
             </li>
@@ -10,7 +11,11 @@
         <% end %>
     </div>
 
-    <div class = "col-4 right-bar bg-light w-100" style="width:600px; height:auto;">
+    <div class = "col-4 right-bar bg-light w-900 h-auto" >
+        <div class="border p-2 text-center mt-2 bg-dark text-white font-weight-bold">User information</div>
+        <div class='w-auto text-center m-3'>
+            <%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"100x100", class:"rounded-circle border rounded-circle p-1 border bg-warning") : image_tag('default_profile_picture.png', size:"100x100", class:"rounded-circle p-1 border bg-warning") %>
+        </div>
         <div class="mx-2 px-2 mt-5">
             <span class="font-weight-bold">Full name: </span> <%= current_user.fullname %><br />
             <span class="font-weight-bold">Username:</span> <%= current_user.username %><br />  <br>   
@@ -19,13 +24,17 @@
             <span class="font-weight-bold">Following:</span> <%= current_user.followers.count %>
         </div>
         <br><br>
-        <div class = "col-3 right-bar bg-light" style="width:900px; height:auto; max-width:100%">
+        <div class = "col-3 right-bar bg-light w-900 h-auto mw-100">
             <% if signed_in? %>
             <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Followed by</h6>
                 <% by_followeds.each do |u|%>
-                    <div class="pl-5 py-1">
+                    <div class="pl-5 py-1 d-flex">
                         <%= form_with url: followings_path  do |f| %>
-                            <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>) <br>
+                        <div class='w-auto'>
+                            <%=  @user.photo.attached? ? image_tag(@user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
+                         </div>
+                        <div><%= f.hidden_field :followed_id, value: u.id %></div> 
+                            <div><%= u.fullname%> <small>(<%= u.username%>)</small> </div> <br>
                         <% end %>
                     </div>
                 <% end %>

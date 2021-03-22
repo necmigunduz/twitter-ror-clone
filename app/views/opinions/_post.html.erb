@@ -1,8 +1,10 @@
 <div class="row">
+    
     <div class="col-8 mt-4">
+        <h4 class="border text-white bg-dark text-center p-3">Posts from Self and Friends</h4>
         <% @opinions_all.each do |opinion|%>
         <ul>
-            <li style="list-style-type: none;">
+            <li class="list-no-style">
             <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
             <%= opinion.text %>
             </li>
@@ -12,13 +14,18 @@
 
     <div class="col-4 w-100">
         <% if signed_in? %>
-        <div class = "col-3 right-bar bg-light pt-4" style="width:900px; height:auto; max-width:100%">
+        <div class = "col-3 right-bar bg-light pt-4 w-900 h-auto mw-100" >
             <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
             <% suggested_followers.each do |u|%>
             <div>
                 <%= form_with url: followings_path  do |f| %>
-                    <%= f.hidden_field :followed_id, value: u.id %> <div class="d-flex justify-content-between"><div class="my-2"><%= u.fullname%> (<%= u.username%>)</div>
-                    <div class="my-2"><%= f.submit value:'Follow', class:'btn btn-primary pl-3 mt-2' %></div></div>
+                    <%= f.hidden_field :followed_id, value: u.id %> 
+                    <div class="d-flex justify-content-between">
+                    <div class='px-2'>
+                        <%=  @user.photo.attached? ? image_tag(@user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
+                    </div>
+                    <div class="text-center"><%= u.fullname%> <small>(<%= u.username%>)</small></div>
+                    <div class="my-1"><%= f.submit value:'Follow', class:'btn btn-primary pl-3 mt-2' %></div>
                 <% end %>
             </div>
             <% end %>
