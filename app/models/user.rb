@@ -10,6 +10,9 @@ class User < ApplicationRecord
     has_many :follows, through: :followers, source: :followed
     has_many :followeds, class_name: 'Following', foreign_key: 'followed_id'
     has_many :followees, through: :followeds, source: :follower
+    has_one_attached :photo
+    has_one_attached :coverImage
+    
 
     def suggested_followers
         # Get who the current user are following

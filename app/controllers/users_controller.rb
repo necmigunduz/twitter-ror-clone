@@ -27,14 +27,17 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-
-    flash[:notice] = "Your profile is successfully updated!"
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+      flash[:notice] = "Your profile is successfully updated!"
+    else
+      flash[:alert] = 'YOur profile is not updated!'
+      render 'edit'
+    end
   end
 
   private 
   def user_params
-    params.require(:user).permit(:username, :fullname)
+    params.require(:user).permit(:username, :fullname, :photo, :coverImage)
   end
 end

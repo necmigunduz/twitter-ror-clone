@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_params
-    params.permit(:username, :fullname)
+    params.permit(:username, :fullname, :photo, :coverImage)
   end
 end

@@ -14,6 +14,8 @@
   <%= f.label(:email, "Full name:") %><br />
     <%= f.text_field 'fullname', placeholder: "Maximum 30 characters long" %><br />
     <br />
+    <p>You can upload your profile photo</p>
+    <%= f.file_field :photo, class: "mb-3" %> <br>
     <%= f.submit("Submit") %>
   <% end %>
   </div> 

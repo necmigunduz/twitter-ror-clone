@@ -13,11 +13,16 @@
   <body>
     <div class="container-fluid" style="height: 600px;">
         <div class="row">
+            
             <div class="col-3 text-dark flex-column h-auto bg-dark">
-                <div class="flex-row"> 
-                    <%# <img src="#" alt="profile"> %>
-                    <% if signed_in?%>
-                    <p class="font-weight-bold text-light m-5"><%= current_user.fullname %></p>
+                <div class=" d-flex align-items-center pt-5 pb-2 ml-2 ">
+                    <% if signed_in? %>
+                    <div class='w-auto pm0 '>
+                        <%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
+                    </div>
+                    <div class="text-center ml-3 text-white font-weight-bold">
+                        <%=  current_user.fullname %>
+                    </div>
                     <% end %>
                 </div>
                 <div class="flex-column text-secondary ml-1" style="font-size:12px; border-top: 2px solid rgb(33,40,50)">
@@ -35,29 +40,30 @@
                     </div>
                 </div>
                 <div class="links d-flex flex-column" style="border-top: 2px solid rgb(33,40,50)">
-                <% if signed_in?%>
-                <ul class="mt-5">
-                <li class="my-3" style="list-style-type: none;">
-                <i class="fas fa-home text-white"></i>
-                <%= link_to 'Home', root_path, class:"fa-1x text-white my-5 font-weight-bold" %>
-                </li>
-                <li class="my-3" style="list-style-type: none;">
-                <i class="far fa-user text-white"></i>
-                <%= link_to 'Profile', user_path(current_user), class:"fa-1x my-5 text-white font-weight-bold" %>
-                </li>
-                </ul>
-                <% else %>
+                    <% if signed_in?%>
+                    <ul class="mt-5">
+                        <li class="my-3" style="list-style-type: none;">
+                        <i class="fas fa-home text-white"></i>
+                        <%= link_to 'Home', root_path, class:"fa-1x text-white my-5 font-weight-bold" %>
+                        </li>
+                        <li class="my-3" style="list-style-type: none;">
+                        <i class="far fa-user text-white"></i>
+                        <%= link_to 'Profile', user_path(current_user), class:"fa-1x my-5 text-white font-weight-bold" %>
+                        </li>
+                    </ul>
+                    <% else %>
                     <p class="text-white ml-3 mt-5">'You are not signed in! To see the content, you need to sign in!'</p>
                 <% end %>
                 </div>
             </div>
+            
             <div class="col-9 p-0">
-                <div class="bg-primary h-auto" style="width: 959px;">
+                <div class="bg-secondary h-auto" style="width: 959px;">
                     <div class="row container">
-                        <nav class="nav col-2 mt-1 mb-1 p-1 p-2 bg-dark" style="border:5px solid white; border-top-right-radius: 60px;">
-                        <h3 class="mx-2 text-white">dwidder</h3>
-                        <%= link_to fa_icon('dove'), root_path, class:"fa-3x mx-2 mt-3 text-dark border p-2 bg-light" %>
-                        <small class="mx-2 text-light">Express yourself!</small>
+                        <nav class="nav col-2 my-1 bg-dark" style="border:3px solid lightblue; border-top-right-radius: 60px;">
+                            <h3 class="ml-2 text-warning font-weight-bold mt-2">dwidder</h3>
+                            <%= link_to fa_icon('dove'), root_path, class:"fa-3x ml-3 text-white border-secondary p-4 bg-primary rounded" %>
+                            <small class="ml-3 mt-1 text-light font-weight-bold">Express yourself!</small>
                         </nav>
                         
                         <div class="nav justify-content-end mb-2 col-10 mt-3 d-flex">
