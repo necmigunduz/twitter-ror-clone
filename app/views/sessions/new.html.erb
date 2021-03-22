@@ -1,18 +1,21 @@
-<h2>Sign In Form</h2>
-<div>
-<%= form_with scope: :user, url: '/sessions' do |f| %>
+<div class="d-flex flex-column">
+  <div>
+  <h2>Sign In Form</h2>
+  <%= form_with scope: :user, url: '/sessions' do |f| %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    
+    <%= f.submit "Submit" %>
+  <% end %>
+  </div><br />
   
-  <%= f.submit "Submit" %>
-<% end %>
-</div><br />
 
-<p>Not a member?</p>
+  <div>
+  <p>Not a member?</p>
 
-<% if !signed_in?%>
-<%= link_to 'Sign up', new_user_path, class: '' %>
-<% end %>
-
-
+  <% if !signed_in?%>
+  <%= link_to 'Sign up', new_user_path, class: '' %>
+  <% end %>
+  </div>
+</div>

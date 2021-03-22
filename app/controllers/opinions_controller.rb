@@ -1,4 +1,6 @@
 class OpinionsController < ApplicationController
+  before_action :current_user_exist?, :except => [:create, :show, :new]
+  
   def new
     @opinion = Opinion.new
   end

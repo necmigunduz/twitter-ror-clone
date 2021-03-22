@@ -1,21 +1,25 @@
-<div class="align-items-center">
-<% @user.errors.full_messages.each do |msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<div class="d-flex flex-column">
+  <div class="align-items-center">
+  <% @user.errors.full_messages.each do |msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+  <br />
+  <h2>Sign Up</h2>
+  <%= form_with model: @user do |f| %>
+    <%= f.label(:user_name, "Username:") %><br />
+    <%= f.text_field 'username', placeholder: "Maximum 10 characters long" %><br/>
+    
+  <%= f.label(:email, "Full name:") %><br />
+    <%= f.text_field 'fullname', placeholder: "Maximum 30 characters long" %><br />
+    <br />
+    <%= f.submit("Submit") %>
+  <% end %>
+  </div> 
+  <br />
+  <div>
+  <p>If you have an account, please sign in!</p>
+  <%= link_to 'Sign in', new_session_path %>
   </div>
-<% end %>
-<h2>Sign Up</h2>
-<%= form_with model: @user do |f| %>
-  <%= f.label(:user_name, "Username:") %><br />
-  <%= f.text_field 'username', placeholder: "Maximum 10 characters long" %><br/>
-  
- <%= f.label(:email, "Full name:") %><br />
-  <%= f.text_field 'fullname', placeholder: "Maximum 30 characters long" %><br />
-  
-  <%= f.submit("Submit") %>
-<% end %>
-</div>
-<div>
-<p>If you have an account, please sign in!</p>
-<%= link_to 'Sign in', new_session_path %>
 </div>
