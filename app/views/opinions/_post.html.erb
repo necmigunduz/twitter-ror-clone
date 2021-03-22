@@ -1,28 +1,28 @@
-    <div style="margin-bottom: 1200px;">
-    <% @opinions_all.each do |opinion|%>
-    <ul>
-        <li style="list-style-type: none;">
-        <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
-        <%= opinion.text %>
-        </li>
-    </ul>
-    <% end %>
-    </div>
-
-    <div style="margin-left:350px; width: 150%;">
-        <% if signed_in? %>
-        <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
-            <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
-                <% suggested_followers.each do |u|%>
-                    <div class="pl-5 py-1">
-                        <%= form_with url: followings_path  do |f| %>
-                            <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>) <br>
-                            <%= f.submit value:'Follow', class:'btn btn-primary' %>
-                        <% end %>
-                    </div>
-                <% end %>
-        </div>  
+<div class="row">
+    <div class="col-8">
+        <% @opinions_all.each do |opinion|%>
+        <ul>
+            <li style="list-style-type: none;">
+            <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
+            <%= opinion.text %>
+            </li>
+        </ul>
         <% end %>
     </div>
 
-
+    <div class="col-4 w-100">
+        <% if signed_in? %>
+        <div class = "col-3 right-bar bg-light" style="width:900px; height:auto; max-width:100%">
+            <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
+            <% suggested_followers.each do |u|%>
+            <div>
+                <%= form_with url: followings_path  do |f| %>
+                    <%= f.hidden_field :followed_id, value: u.id %> <div class="d-flex justify-content-between"><div class="my-2"><%= u.fullname%> (<%= u.username%>)</div>
+                    <div class="my-2"><%= f.submit value:'Follow', class:'btn btn-primary pl-3 mt-2' %></div></div>
+                <% end %>
+            </div>
+            <% end %>
+        </div>  
+        <% end %>
+    </div>
+</div>

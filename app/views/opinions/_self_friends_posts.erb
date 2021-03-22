@@ -1,5 +1,5 @@
-
-    <div>
+<div class="row">
+    <div class="col-8">
         <% @opinions_current_user_friends.each do |opinion|%>
         <ul>
             <li style="list-style-type: none;">
@@ -9,9 +9,18 @@
         </ul>
         <% end %>
     </div>
-    <div style="margin-left:350px; width: 150%;">
-        <% if signed_in? %>
-        <div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
+
+    <div class = "col-4 right-bar bg-light w-100" style="width:600px; height:auto;">
+        <div class="mx-2 px-2 mt-5">
+            <span class="font-weight-bold">Full name: </span> <%= current_user.fullname %><br />
+            <span class="font-weight-bold">Username:</span> <%= current_user.username %><br />  <br>   
+            <span class="font-weight-bold">Followers:</span> <%= current_user.followeds.count %>
+            <span>/</span>
+            <span class="font-weight-bold">Following:</span> <%= current_user.followers.count %>
+        </div>
+        <br><br>
+        <div class = "col-3 right-bar bg-light" style="width:900px; height:auto; max-width:100%">
+            <% if signed_in? %>
             <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Followed by</h6>
                 <% by_followeds.each do |u|%>
                     <div class="pl-5 py-1">
@@ -20,6 +29,7 @@
                         <% end %>
                     </div>
                 <% end %>
-        </div>  
-        <% end %>
-    </div>
+            <% end %>
+        </div>
+    </div>  
+</div>
