@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: current_user.id)
-    @opinions_current_user_friends = @user.friends_and_own_posts.ordered_by_most_recent
+    # @user = User.find_by(id: current_user.id)
+    @opinions_current_user_friends = current_user.friends_and_own_posts.ordered_by_most_recent
   end
 
   def update

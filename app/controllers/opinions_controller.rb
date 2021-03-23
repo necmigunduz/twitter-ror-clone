@@ -20,7 +20,6 @@ class OpinionsController < ApplicationController
   end
   
   def index
-    @user = User.find_by(id: current_user.id)
     @opinions_all = Opinion.all
   end 
 

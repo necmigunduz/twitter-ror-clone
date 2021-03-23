@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+RSpec.configure do |c|
+  c.use_transactional_examples = false
+  c.order = 'defined'
+end
+
 RSpec.describe User, type: :model do
   it 'is valid with a username and a fullname' do
     user = User.create(username: 'janet', fullname: 'Janet John')
@@ -21,21 +26,7 @@ RSpec.feature 'Users' do
     click_on 'Home'
     expect(current_path).to eql(root_path)
     click_on 'Follow'
-    click_on 'All users'
-    first(:button, 'Request Friendship').click
-    # click_on 'Request Friendship'
-    expect(page).to have_current_path('/users/1')
-    expect(page).to have_content 'user2'
-    click_on 'Sign out'
-
-    fill_in 'Email', with: 'user2@mail.com'
-    fill_in 'Password', with: '123456'
-    click_on 'Log in'
     expect(current_path).to eql(root_path)
-    click_on 'All users'
-    page.find_by_id(2).click
-    click_on 'Accept'
-    expect(page).to have_current_path('/users/2')
-    expect(page).to have_content 'user1'
+    expect(page).not_to have_content 'user2'
   end
 end
