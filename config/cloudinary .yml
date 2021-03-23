@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: duzw5dfmm
+  api_key: '936357196427737'
+  api_secret: ud2j1fyH4vUt7LcnQ_JOHfLsA9Q
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: duzw5dfmm
+  api_key: '936357196427737'
+  api_secret: ud2j1fyH4vUt7LcnQ_JOHfLsA9Q
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: duzw5dfmm
+  api_key: '936357196427737'
+  api_secret: ud2j1fyH4vUt7LcnQ_JOHfLsA9Q
+  enhance_image_tag: true
+  static_file_support: false
