@@ -13,23 +13,6 @@
     </div>
 
     <div class="col-4 w-100">
-        <% if signed_in? %>
-        <div class = "col-3 right-bar bg-light pt-4 w-900 h-auto mw-100" >
-            <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
-            <% suggested_followers.each do |u|%>
-            <div>
-                <%= form_with url: followings_path  do |f| %>
-                    <%= f.hidden_field :followed_id, value: u.id %> 
-                    <div class="d-flex justify-content-between">
-                    <div class='px-2'>
-                        <%=  u.photo.attached? ? image_tag(u.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
-                    </div>
-                    <div class="text-center"><%= u.fullname%> <small>(<%= u.username%>)</small></div>
-                    <div class="my-1"><%= f.submit value:'Follow', class:'btn btn-primary pl-3 mt-2' %></div>
-                <% end %>
-            </div>
-            <% end %>
-        </div>  
-        <% end %>
+        <%= who_to_follows%>
     </div>
 </div>

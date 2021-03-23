@@ -25,20 +25,7 @@
         </div>
         <br><br>
         <div class = "col-3 right-bar bg-light w-900 h-auto mw-100">
-            <% if signed_in? %>
-            <h6 class="text-center text-light font-weight-bold border p-2 bg-dark">Followed by</h6>
-                <% by_followeds.each do |u|%>
-                    <div class="pl-5 py-1 d-flex">
-                        <%= form_with url: followings_path  do |f| %>
-                        <div class='w-auto'>
-                            <%=  u.photo.attached? ? image_tag(u.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
-                         </div>
-                        <div><%= f.hidden_field :followed_id, value: u.id %></div> 
-                            <div><%= u.fullname%> <small>(<%= u.username%>)</small> </div> <br>
-                        <% end %>
-                    </div>
-                <% end %>
-            <% end %>
+            <%= followed_by %>
         </div>
     </div>  
 </div>

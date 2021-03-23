@@ -17,46 +17,17 @@
             
             <div class="col-3 text-dark flex-column h-700 bg-dark">
                 <div class=" d-flex align-items-center pt-5 pb-2 ml-2 ">
-                    <% if signed_in? %>
-                    <div class='w-auto'>
-                        <%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
-                    </div>
-                    <div class="text-center ml-3 text-white font-weight-bold">
-                        <%=  current_user.fullname %>
-                    </div>
-                    <% end %>
+                    <%= profile_photo%>
                 </div>
 
                 <div class="flex-column text-secondary ml-1 font-12 border-top-2">
                     <div class="d-flex flex-row ml-3">
-                        <% if signed_in?%>
-                        <div class="p-2 d-flex flex-column">
-                            <span class="px-3 text-light"><%= current_user.followeds.count %></span>
-                            <span>Followers</span>
-                        </div>
-                        <div class="p-2 d-flex flex-column">
-                            <span class="px-3 text-light"><%= current_user.followers.count %></span>
-                            <span>Following</span>
-                        </div>
-                        <% end %>
+                        <%= counter %>
                     </div>
                 </div>
 
                 <div class="links d-flex flex-column">
-                    <% if signed_in?%>
-                    <ul class="mt-5">
-                        <li class="my-3 list_no_style">
-                        <i class="fas fa-home text-white"></i>
-                        <%= link_to 'Home', root_path, class:"fa-1x text-white my-5 font-weight-bold" %>
-                        </li>
-                        <li class="my-3 list_no_style">
-                        <i class="far fa-user text-white"></i>
-                        <%= link_to 'Profile', user_path(current_user), class:"fa-1x my-5 text-white font-weight-bold" %>
-                        </li>
-                    </ul>
-                    <% else %>
-                    <p class="text-white ml-3 mt-5">'You are not signed in! To see the content, you need to sign in!'</p>
-                <% end %>
+                    <%= links %>
                 </div>
             </div>
             
@@ -69,20 +40,8 @@
                         </nav>
                         
                         <div class="nav justify-content-end mb-2 col-10 mt-3 d-flex">
-                            <% if !signed_in?%>
-                            <div class="nav-item">
-                                <%= link_to fa_icon('sign-in-alt'), new_session_path, class:"fa-2x px-2 text-dark" %>
-                            </div>
-                            <% end %>
-                            <% if signed_in?%>
-                            <div><small class="text-white font-weight-bold">Create a new opinion</small></div>
-                            <div class="nav-item">
-                                <%= link_to fa_icon('pen-fancy'), user_path(current_user.id), class:"fa-2x px-2 text-light" %>
-                            </div>
-                            <div class="nav-item">
-                                <%= link_to fa_icon('sign-out-alt'), session_path(current_user.id), method: :delete, data: { confirm: 'You are logging out!' }, class:"fa-2x px-2 text-dark" %>
-                            </div>
-                            <% end %>
+                            <%= create_opinion %>
+                            <%= nav_links %>
                         </div>
                     </div>
                 </div>

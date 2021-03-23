@@ -12,9 +12,6 @@
 
   <div>
     <p class="font-weight-bold border-bottom border-dark">Not a member?</p>
-
-    <% if !signed_in?%>
-    <%= link_to 'Sign up', new_user_path, class:'font-weight-bold border p-2 border-danger bg-dark text-white rounded' %>
-    <% end %>
+    <%= signup_link %>
   </div>
 </div>
