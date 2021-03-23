@@ -31,7 +31,7 @@
                     <div class="pl-5 py-1 d-flex">
                         <%= form_with url: followings_path  do |f| %>
                         <div class='w-auto'>
-                            <%=  @user.photo.attached? ? image_tag(@user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
+                            <%=  u.photo.attached? ? image_tag(u.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50") %>
                          </div>
                         <div><%= f.hidden_field :followed_id, value: u.id %></div> 
                             <div><%= u.fullname%> <small>(<%= u.username%>)</small> </div> <br>

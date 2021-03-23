@@ -18,8 +18,6 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  private
-
   def require_user
     return if signed_in?
 
