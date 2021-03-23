@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    mount_uploader :image, ImageUploader
+    
     validates :username, presence: true, length: { maximum: 10 }
     validates :fullname, presence: true, length: { maximum: 30 }
     validates_uniqueness_of :username, on: :create, message: "This username is already taken!"

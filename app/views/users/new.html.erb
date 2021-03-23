@@ -15,9 +15,15 @@
     <%= f.text_field 'fullname', placeholder: "Maximum 30 characters long" %><br />
     <br />
     <p class="font-weight-bold">You can upload your profile photo</p>
-    <%= f.file_field :photo, class: "mb-3" %> <br>
+    <%= f.label :photo, 'User photo' %>
+    <%= f.hidden_field :photo_cache %>
+    <%= f.file_field :photo, class:'mb-3' %><br>
+    
     <p class="font-weight-bold">You can upload your cover image</p>
-    <%= f.file_field :coverImage, class: "mb-3" %> <br>
+    <%= f.label :coverImage, 'Cover image' %>
+    <%= f.hidden_field :coverImage_cache %>
+    <%= f.file_field :coverImage %>
+      
     <%= f.submit("Sign up",class:"border-0 font-weight-bold border-success p-2 rounded bg-dark text-white") %>
   <% end %>
   </div> 
