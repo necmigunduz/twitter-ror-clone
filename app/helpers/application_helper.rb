@@ -66,7 +66,7 @@ module ApplicationHelper
         content = ''
         if signed_in?
             content << "<div class='w-auto'>
-                #{current_user.photo.attached? ? image_tag(current_user.photo, size:"50x50") : image_tag('default_profile_picture.png', size:"50x50")}
+                #{ display_photo_img(current_user) }
             </div>
             <div class='text-center ml-3 text-white font-weight-bold'>
                 #{  current_user.fullname }

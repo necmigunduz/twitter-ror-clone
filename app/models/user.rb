@@ -1,10 +1,11 @@
 class User < ApplicationRecord
     mount_uploader :image, ImageUploader
-    
+
     validates :username, presence: true, length: { maximum: 10 }
     validates :fullname, presence: true, length: { maximum: 30 }
     validates_uniqueness_of :username, on: :create, message: "This username is already taken!"
-
+    # validates :photo, blob: { content_type: :image }
+    # validates :coverImage, blob: { content_type: :image }  
 
     has_many :opinions, foreign_key: :author_id
     has_many :followings
@@ -12,8 +13,8 @@ class User < ApplicationRecord
     has_many :follows, through: :followers, source: :followed
     has_many :followeds, class_name: 'Following', foreign_key: 'followed_id'
     has_many :followees, through: :followeds, source: :follower
-    has_one_attached :photo
-    has_one_attached :coverImage
+    has_one_attached :photo, dependent: :destroy
+    has_one_attached :coverImage, dependent: :destroy
     
 
     def suggested_followers
@@ -61,5 +62,14 @@ class User < ApplicationRecord
     def friends_and_own_posts
         Opinion.where(author_id: (follows.to_a << self))
         # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
+    end
+
+    # Returns resized image
+    def display_photo
+        photo.variant(resize_to_limit: [50, 50])
+    end
+
+    def display_coverImage
+        coverImage.variant(resize_to_limit: [600, 250])
     end
 end
