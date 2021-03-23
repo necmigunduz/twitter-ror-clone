@@ -42,6 +42,7 @@ Rails.application.configure do
 
   # Store files on Amazon S3.
   config.active_storage.service = :cloudinary
+  CLOUDINARY_URL="cloudinary://936357196427737:ud2j1fyH4vUt7LcnQ_JOHfLsA9Q@duzw5dfmm"
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
