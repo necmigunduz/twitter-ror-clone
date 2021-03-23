@@ -78,7 +78,7 @@ module ApplicationHelper
     def who_to_follows
         content = ''
         if signed_in?
-            "<div class = 'col-3 right-bar bg-light pt-4 w-900 h-auto mw-100' >
+            content << "<div class = 'col-3 right-bar bg-light pt-4 w-900 h-auto mw-100' >
                 <h6 class='text-center text-light font-weight-bold border p-2 bg-dark'>Who to follow</h6>"
                 suggested_followers.each do |u|
                 "<div>"
