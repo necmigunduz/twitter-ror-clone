@@ -67,7 +67,7 @@ class User < ApplicationRecord
     photo.variant(resize_to_limit: [50, 50])
   end
 
-  def display_coverImage
+  def display_cover_image
     coverImage.variant(resize_to_limit: [600, 250])
   end
 end

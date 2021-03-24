@@ -22,4 +22,12 @@ module UserHelper
       image_tag 'default_profile_picture.png', class: 'avatar rounded-circle'
     end
   end
+
+  def display_cover_img(user)
+    if user.photo.attached?
+      image_tag user.display_cover_image, class: 'avatar rounded-circle'
+    else
+      image_tag 'default_profile_picture.png', class: 'avatar rounded-circle'
+    end
+  end
 end

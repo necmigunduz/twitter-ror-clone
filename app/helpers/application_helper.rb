@@ -56,8 +56,10 @@ module ApplicationHelper
                 #{link_to fa_icon('pen-fancy'), user_path(current_user.id), class: 'fa-2x px-2 text-light'}
             </div>
             <div class='nav-item'>
-                #{link_to fa_icon('sign-out-alt'), session_path(current_user.id), method: :delete,
-                                                                                  data: { confirm: 'You are logging out!' }, class: 'fa-2x px-2 text-dark'}
+                #{link_to fa_icon('sign-out-alt'), session_path(current_user.id),
+                          method: :delete,
+                          data: { confirm: 'You are logging out!' },
+                          class: 'fa-2x px-2 text-dark'}
             </div>"
     end
     content.html_safe
@@ -66,7 +68,7 @@ module ApplicationHelper
   def profile_photo
     content = ''
     if signed_in?
-      content << "<div class='w-auto h-auto'>
+      content << "<div>
                 #{display_photo_img(current_user)}
             </div>
             <div class='text-center ml-3 text-white font-weight-bold'>
@@ -77,9 +79,9 @@ module ApplicationHelper
   end
 
   def signup_link
-    unless signed_in?
-      link_to 'Sign up', new_user_path,
-              class: 'font-weight-bold border p-2 border-danger bg-dark text-white rounded'
-    end
+    return if signed_in?
+
+    link_to 'Sign up', new_user_path,
+            class: 'font-weight-bold border p-2 border-danger bg-dark text-white rounded'
   end
 end
