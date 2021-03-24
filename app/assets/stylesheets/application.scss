@@ -11,83 +11,83 @@
  * It is generally better to create a new file per style scope.
  */
 @import "bootstrap";
-$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/regular';
-@import '@fortawesome/fontawesome-free/scss/brands';
-@import '@fortawesome/fontawesome-free/scss/v4-shims';
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/v4-shims";
 
 .h-600 {
-    height:600px;
+  height: 600px;
 }
 
 .p-100 {
-    padding:140px 250px;
+  padding: 140px 250px;
 }
 
 .profile {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .h-622 {
-    height: 622px;
+  height: 622px;
 }
 .h-700 {
-    height: 700px;
+  height: 700px;
 }
 
 .h-37 {
-    height: 37px;
+  height: 37px;
 }
 
 .w-959 {
-    width: 959px;
+  width: 959px;
 }
 
 .w-900 {
-    width: 900px;
+  width: 900px;
 }
 
 .w-600 {
-    width: 600px;
+  width: 600px;
 }
 
 .font-12 {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .font-20 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .border-5 {
-    border: 5px solid lightgray
+  border: 5px solid lightgray;
 }
 .border-top-2 {
-    border-top: 2px solid rgb(33,40,50)
+  border-top: 2px solid rgb(33, 40, 50);
 }
 
 .border-2-lightblue {
-    border:2px solid lightblue;
+  border: 2px solid lightblue;
 }
 
 .border-top-2 {
-    border-top: 2px solid rgb(33,40,50);
+  border-top: 2px solid rgb(33, 40, 50);
 }
 .border-top-right-radius-60 {
-    border-top-right-radius: 60px;
+  border-top-right-radius: 60px;
 }
 
 .border-top-left-radius-60 {
-    border-top-left-radius: 60px;
+  border-top-left-radius: 60px;
 }
 
 .list_no_style {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .bg-1 {
-    background-color: rgb(82, 167, 232);
+  background-color: rgb(82, 167, 232);
 }
