@@ -55,7 +55,7 @@ Please [check](https://dwidder-ng.herokuapp.com/users/new). You may use 'anonymo
 - If you are using master branch,run `git push heroku master`. If you are using another branch, run `git push heroku +HEAD:master`.
 - Run `heroku run rake db:migrate` your terminal.
 - Open your app from your [dashboard of heroku](https://dashboard.heroku.com/).
-- Push 'Open app' button to access your app from your dashboard of Heroku.
+- Push 'Open app' button to access your app from your dashboard of Heroku..
 
 ## Using Cloudinary for active record used for images
 
