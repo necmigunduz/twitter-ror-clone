@@ -68,7 +68,7 @@ module ApplicationHelper
   def profile_photo
     content = ''
     if signed_in?
-      content << "<div>
+      content << "<div class='profile'>
                 #{display_photo_img(current_user)}
             </div>
             <div class='text-center ml-3 text-white font-weight-bold'>
