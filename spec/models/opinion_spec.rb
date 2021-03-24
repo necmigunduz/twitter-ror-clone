@@ -19,7 +19,6 @@ RSpec.feature 'Users' do
   end
 
   scenario 'user1 sends friendship request and user2 accepts the request' do
-    
     visit root_path
     click_on 'Sign in'
     fill_in 'Username', with: 'user1'

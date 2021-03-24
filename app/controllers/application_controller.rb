@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  
   helper_method :current_user
   helper_method :signed_in?
   helper_method :current_user_exist?
@@ -9,9 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_exist?
-    if current_user.nil?
-      redirect_to new_user_path
-    end
+    redirect_to new_user_path if current_user.nil?
   end
 
   def signed_in?
@@ -28,6 +25,4 @@ class ApplicationController < ActionController::Base
   def user_params
     params.permit(:username, :fullname, :photo, :coverImage)
   end
-
-
 end

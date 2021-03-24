@@ -6,7 +6,7 @@ class FollowingsController < ApplicationController
       flash[:notice] = "You have started following #{User.find(params[:followed_id]).fullname}"
       redirect_to root_path
     else
-      flash[:notice] = "Your request is not completed. Try again!"
+      flash[:notice] = 'Your request is not completed. Try again!'
     end
   end
 end
