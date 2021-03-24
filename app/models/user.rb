@@ -36,7 +36,7 @@ class User < ApplicationRecord
         friendship.push(self.id)
 
         User.where.not(id: friendship)
-        # This will produce SQL query with IN. Something like: select * from posts where user_id NOT IN (1,45,874,43);
+  
     end
 
     def by_followeds
