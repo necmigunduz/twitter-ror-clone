@@ -3,18 +3,21 @@ module ApplicationHelper
     content = ''
 
     if signed_in?
-      content << "<div class='p-2 d-flex flex-column'>
+      content << "
+      <div class='text-light font-12 left-profile-color p-counter'>
+          <div class='p-2 d-flex flex-column border-bottom border-dark'>
               <span class='px-3 text-light'>#{current_user.followeds.count}</span>
               <span>Followers</span>
           </div>
-          <div class='p-2 d-flex flex-column'>
+          <div class='p-2 d-flex flex-column border-bottom border-dark'>
               <span class='px-3 text-light'>#{current_user.followers.count} </span>
               <span>Following</span>
           </div> 
           <div class='p-2 d-flex flex-column'>
             <span class='px-3 text-light'>#{current_user.opinions.count} </span>
             <span>Opinion(s)</span>
-          </div>"
+          </div>
+      </div>"
     end
     content.html_safe
   end
@@ -72,12 +75,14 @@ module ApplicationHelper
   def profile_photo
     content = ''
     if signed_in?
-      content << "<div class='profile'>
+      content << "<div class='d-flex align-items-center border border-dark p-profile left-profile-color'>
+            <div class='profile'>
                 #{display_photo_img(current_user)}
             </div>
             <div class='text-center ml-3 text-white font-weight-bold'>
                 #{current_user.fullname}
-            </div>"
+            </div>
+          </div>"
     end
     content.html_safe
   end
