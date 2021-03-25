@@ -91,6 +91,6 @@ module ApplicationHelper
     return if signed_in?
 
     link_to 'Sign up', new_user_path,
-            class: 'font-weight-bold border border-danger bg-dark text-white rounded'
+            class: 'font-weight-bold border border-danger bg-dark text-white rounded p-2'
   end
 end
