@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
   has_one_attached :coverImage, dependent: :destroy
 
+  scope :followed_ordered_by_most_recent, -> { includes(:followeds).order(created_at: :desc) }
+  scope :follower_ordered_by_most_recent, -> { includes(:followeds).order(created_at: :desc) }
+
   def suggested_followers
     following = Following.select(:followed_id).where(follower_id: id)
     followers = Following.select(:follower_id).where(followed_id: id)
@@ -29,7 +32,7 @@ class User < ApplicationRecord
 
     friendship.push(id)
 
-    User.where.not(id: friendship).take(10)
+    User.where.not(id: friendship).follower_ordered_by_most_recent.take(10)
   end
 
   def by_followeds
@@ -40,7 +43,7 @@ class User < ApplicationRecord
       friendship.push(f.follower_id)
     end
 
-    User.where(id: friendship)
+    User.where(id: friendship).follower_ordered_by_most_recent  
   end
 
   def friends_and_own_posts
