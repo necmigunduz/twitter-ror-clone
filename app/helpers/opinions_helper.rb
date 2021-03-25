@@ -4,7 +4,7 @@ module OpinionsHelper
 
     if signed_in?
       content << "<h6 class='d-flex text-center text-light font-weight-bold border p-2 bg-dark'>Who to follow</h6>"
-      content << "<div class = 'd-flex col-3 right-bar bg-light pt-4 w-900 h-auto mw-100' >"
+      content << "<div class = 'd-flex col-3 right-bar pt-4 w-900 h-auto mw-100' >"
       suggested_followers.each do |u|
         content << "<div class='text-center'>
                     <div class='p-2'>

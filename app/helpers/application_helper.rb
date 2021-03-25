@@ -10,6 +10,10 @@ module ApplicationHelper
           <div class='p-2 d-flex flex-column'>
               <span class='px-3 text-light'>#{current_user.followers.count} </span>
               <span>Following</span>
+          </div> 
+          <div class='p-2 d-flex flex-column'>
+            <span class='px-3 text-light'>#{current_user.opinions.count} </span>
+            <span>Opinion(s)</span>
           </div>"
     end
     content.html_safe

@@ -26,7 +26,6 @@ RSpec.feature 'Users' do
     click_on 'Home'
     expect(current_path).to eql(root_path)
     click_on 'Follow'
-    expect(current_path).to eql(root_path)
     expect(page).not_to have_content 'user2'
   end
 end

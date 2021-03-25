@@ -11,21 +11,16 @@
         <% end %>
     </div>
 
-    <div class = "col-4 right-bar bg-light w-900 h-auto" >
+    <div class = "col-4 right-bar bg-light w-900 h-auto" >     
         <div class="border p-2 text-center mt-2 bg-dark text-white font-weight-bold">User information</div>
         <div class='w-auto text-center m-3'>
-            <%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"100x100", class:"rounded-circle border rounded-circle p-1 border bg-warning") : image_tag('default_profile_picture.png', size:"100x100", class:"rounded-circle p-1 border bg-warning") %>
+            <div class="pb-2"><%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"100x100", class:"rounded-circle border rounded-circle p-1 border bg-warning") : image_tag('default_profile_picture.png', size:"100x100", class:"rounded-circle p-1 border bg-warning") %></div>
+            <span class="px-auto"><%= current_user.fullname %>(<%= current_user.username %>)</span> <br>   
+            <span class="font-weight-bold">Followers:</span> <%= current_user.followeds.count %> <br>
+            <span class="font-weight-bold">Following:</span> <%= current_user.followers.count %> <br>
+            <span class="font-weight-bold">Opinion(s):</span> <%= current_user.opinions.count %>
         </div>
-        <div class="mx-2 px-2 mt-5">
-            <span class="font-weight-bold">Full name: </span> <%= current_user.fullname %><br />
-            <span class="font-weight-bold">Username:</span> <%= current_user.username %><br />  <br>   
-            <span class="font-weight-bold">Followers:</span> <%= current_user.followeds.count %>
-            <span>/</span>
-            <span class="font-weight-bold">Following:</span> <%= current_user.followers.count %>
-        </div>
-        <br><br>
-        <div class = "col-3 right-bar bg-light w-900 h-auto mw-100">
-            <%= followed_by %>
-        </div>
+        <div class = "right-bar bg-light w-900 h-auto mw-100">
+        <%= followed_by %>
     </div>  
 </div>
