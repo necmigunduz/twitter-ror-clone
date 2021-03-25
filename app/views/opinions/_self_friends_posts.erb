@@ -1,3 +1,6 @@
+<div class='px-2 text-center'>
+    <%=  current_user.coverImage.attached? ? image_tag(current_user.coverImage, size:"600x200") : image_tag('default_cover_image.png', size:"600x290") %>
+</div> <br />
 <div class="row">
     <div class="col-8">
         <h4 class="border text-white bg-dark text-center p-3 font-weight-bold">Posts</h4>
