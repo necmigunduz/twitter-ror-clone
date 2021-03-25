@@ -43,7 +43,7 @@ class User < ApplicationRecord
       friendship.push(f.follower_id)
     end
 
-    User.where(id: friendship).follower_ordered_by_most_recent  
+    User.where(id: friendship).follower_ordered_by_most_recent
   end
 
   def friends_and_own_posts
