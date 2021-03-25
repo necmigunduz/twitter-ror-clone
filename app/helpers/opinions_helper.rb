@@ -42,8 +42,8 @@ module OpinionsHelper
                                       size: '50x50')
                           end}
                     </div>
-                    <span class='mx-2'>#{u.fullname}</span>
-                    <span>(#{u.username})</span>
+                    <span class='mx-2 my-3'>#{u.fullname}</span>
+                    <span class='my-3'>(#{u.username})</span>
                 </div>"
       end
     end
