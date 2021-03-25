@@ -30,9 +30,9 @@ module OpinionsHelper
     content = ''
 
     if signed_in?
-      content << "<h6 class='text-center text-light font-weight-bold border p-2 bg-dark'>Followed by</h6>"
+      content << "<h6 class='text-center text-light font-weight-bold border p-1 bg-dark'>Followed by</h6>"
       by_followeds.each do |u|
-        content << "<div class='pl-5 py-1 d-flex justify-content-between'>
+        content << "<div class='py-1 d-flex'>
                     <div class='w-auto'>
                         #{if u.photo.attached?
                             image_tag(u.photo,
@@ -42,9 +42,8 @@ module OpinionsHelper
                                       size: '50x50')
                           end}
                     </div>
-                    #{u.fullname}
-                    <span>-</span>
-                    #{u.username}
+                    <span class='mx-2'>#{u.fullname}</span>
+                    <span>(#{u.username})</span>
                 </div>"
       end
     end
