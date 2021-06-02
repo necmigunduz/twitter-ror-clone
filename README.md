@@ -4,7 +4,7 @@
 ![GitHub followers](https://img.shields.io/github/followers/necmigunduz?label=necmigunduz&style=social)
 ![Twitter URL](https://img.shields.io/twitter/follow/necm_gun?label=Follow&style=social)
 
-> This is the capstone project of Microverse Ruby on Rails course..
+> This is the capstone project of Microverse Ruby on Rails course.
 
 > Dwidder!
 
