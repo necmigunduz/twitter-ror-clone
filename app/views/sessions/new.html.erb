@@ -1,0 +1,16 @@
+<div class="d-flex flex-column border p-100 bg-light rounded">
+  <div>
+    <h2 class="border-bottom border-dark mb-2 font-weight-bold">Sign in form</h2>
+    <%= form_with scope: :user, url: '/sessions' do |f| %>
+
+      <%= f.label :username, class:"font-weight-bold" %>
+      <%= f.text_field :username, placeholder: "Enter your username" %>
+      <%= f.submit "Sign in", class:"bg-dark text-white font-weight-bold px-2 py-1 mt-2 rounded" %>
+    <% end %>
+  </div><br />
+
+  <div>
+    <p class="font-weight-bold border-bottom border-dark">Not a member?</p>
+    <%= signup_link %>
+  </div>
+</div>

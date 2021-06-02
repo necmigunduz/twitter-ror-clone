@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+@import "bootstrap";
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/v4-shims";
+
+.h-600 {
+  height: 600px;
+}
+
+.p-100 {
+  padding: 130px 200px;
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+}
+
+.h-622 {
+  height: 622px;
+}
+
+.h-700 {
+  height: 700px;
+}
+
+.h-37 {
+  height: 37px;
+}
+
+.w-959 {
+  width: 959px;
+}
+
+.w-900 {
+  width: 900px;
+}
+
+.w-600 {
+  width: 600px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.border-5 {
+  border: 5px solid lightgray;
+}
+
+.border-top-2 {
+  border-top: 2px solid rgb(33, 40, 50);
+}
+
+.border-2-lightblue {
+  border: 2px solid lightblue;
+}
+
+.border-top-right-radius-60 {
+  border-top-right-radius: 60px;
+}
+
+.border-top-left-radius-60 {
+  border-top-left-radius: 60px;
+}
+
+.list_no_style {
+  list-style-type: none;
+}
+
+.bg-1 {
+  background-color: rgb(82, 167, 232);
+}
+
+.lightblue {
+  background-color: #4fa0dd;
+}
+
+.left-profile-color {
+  background-color: #060f14;
+}
+
+.p-profile {
+  padding: 50px 85px;
+}
+
+.p-counter {
+  padding: 3px 113px;
+}
+
+.bg-lef {
+  background-color: #213346;
+}

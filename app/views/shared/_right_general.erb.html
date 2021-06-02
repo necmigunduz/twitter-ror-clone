@@ -1,0 +1,13 @@
+<% if signed_in? %>
+<div class = "col-3 right-bar bg-light" style="width:600px; height:auto;">
+    <h6 class="mx-2 mt-5 text-light font-weight-bold border p-2 bg-dark">Who to follow</h6>
+        <% suggested_followers.each do |u|%>
+            <div class="p-2">
+                <%= form_with url: followings_path  do |f| %>
+                    <%= f.hidden_field :followed_id, value: u.id %> <%= u.fullname%> (<%= u.username%>)
+                    <%= f.submit value:'Follow' %>
+                <% end %>
+            </div>
+        <% end %>
+</div>  
+<% end %>

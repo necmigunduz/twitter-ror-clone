@@ -1,0 +1,33 @@
+<div class="d-flex flex-column border my-2 py-4 text-left px-4 rounded bg-light">
+  <div class="align-items-center">
+  <% @user.errors.full_messages.each do |msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+  <br />
+  <h2 class="font-weight-bold border-bottom text-dark border-dark">Sign Up</h2>
+  <%= form_with model: @user do |f| %>
+    <%= f.label(:user_name, "Username:", class:"font-weight-bold") %><br />
+    <%= f.text_field 'username', placeholder: "Maximum 10 characters long" %><br/>
+    
+  <%= f.label(:email, "Full name:", class:"font-weight-bold") %><br />
+    <%= f.text_field 'fullname', placeholder: "Maximum 30 characters long" %><br />
+    <br />
+    <p class="font-weight-bold">You can upload your profile photo</p>
+    <%= f.label :photo, 'User photo' %>
+    <%= f.file_field :photo, class:'mb-3' %><br>
+    
+    <p class="font-weight-bold">You can upload your cover image</p>
+    <%= f.label :coverImage, 'Cover image' %>
+    <%= f.file_field :coverImage %>
+      
+    <%= f.submit("Sign up",class:"border-0 font-weight-bold border-success p-2 rounded bg-dark text-white") %>
+  <% end %>
+  </div> 
+  <br />
+  <div>
+  <p class="font-weight-bold border-bottom border-dark">If you have an account, you can sign in!</p>
+  <%= link_to 'Sign in', new_session_path, class:"border-0 font-weight-bold border-success p-2 rounded bg-dark text-white" %>
+  </div>
+</div>

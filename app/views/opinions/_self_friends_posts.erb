@@ -1,0 +1,29 @@
+<div class='px-2 text-center'>
+    <%=  current_user.coverImage.attached? ? image_tag(current_user.coverImage, size:"600x200") : image_tag('default_cover_image.png', size:"600x290") %>
+</div> <br />
+<div class="row">
+    <div class="col-8">
+        <h4 class="border text-white bg-dark text-center p-3 font-weight-bold">Posts</h4>
+        <% @opinions_current_user_friends.each do |opinion|%>
+        <ul>
+            <li class="list-no-style">
+            <p class="font-weight-bold">Post from <%= opinion.names(opinion.author_id).fullname %> </p>
+            <%= opinion.text %>
+            </li>
+        </ul>
+        <% end %>
+    </div>
+
+    <div class = "col-4 right-bar bg-light w-900 h-auto" >     
+        <div class="border p-2 text-center mt-2 bg-dark text-white font-weight-bold">User information</div>
+        <div class='w-auto text-center m-3'>
+            <div class="pb-2"><%=  current_user.photo.attached? ? image_tag(current_user.photo, size:"100x100", class:"rounded-circle border rounded-circle p-1 border bg-warning") : image_tag('default_profile_picture.png', size:"100x100", class:"rounded-circle p-1 border bg-warning") %></div>
+            <span class="px-auto"><%= current_user.fullname %>(<%= current_user.username %>)</span> <br>   
+            <span class="font-weight-bold">Followers:</span> <%= current_user.followeds.count %> <br>
+            <span class="font-weight-bold">Following:</span> <%= current_user.followers.count %> <br>
+            <span class="font-weight-bold">Opinion(s):</span> <%= current_user.opinions.count %>
+        </div>
+        <div class = "right-bar bg-light w-900 h-auto mw-100">
+        <%= followed_by %>
+    </div>  
+</div>

@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users, only: [:new, :create, :show, :index]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :followings, only: [:new, :create, :index, :destroy]
+  resources :opinions, only: [:new,:create,:index, :show]
+
+  root 'opinions#index'
 end
